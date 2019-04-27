@@ -14,5 +14,13 @@ namespace PaymentHistory.DAL.Contexts
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TransactionEntity>()
+                .HasOne(transaction=> transaction.Customer)
+                .WithMany(customer => customer.Transactions)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }
