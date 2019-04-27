@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{9A02
 		TransactionsTableCreationScript.sql = TransactionsTableCreationScript.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentHistory.DAL", "PaymentHistory.DAL\PaymentHistory.DAL.csproj", "{432BF057-3FA1-47A5-962D-D1072BC8B76D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{954863F3-C941-4893-B4B8-090CD825A068}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{954863F3-C941-4893-B4B8-090CD825A068}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{954863F3-C941-4893-B4B8-090CD825A068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432BF057-3FA1-47A5-962D-D1072BC8B76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432BF057-3FA1-47A5-962D-D1072BC8B76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432BF057-3FA1-47A5-962D-D1072BC8B76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432BF057-3FA1-47A5-962D-D1072BC8B76D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
