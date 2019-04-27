@@ -17,4 +17,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PaymentHistory.DAL\PaymentHistory.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
