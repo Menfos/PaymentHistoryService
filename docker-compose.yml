@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  paymenthistory.api:
+    image: ${DOCKER_REGISTRY-}paymenthistoryapi
+    build:
+      context: .
+      dockerfile: PaymentHistory.API/Dockerfile
