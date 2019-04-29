@@ -3,17 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentHistory.API", "PaymentHistory.API\PaymentHistory.API.csproj", "{04FC5F9A-F5CD-4B48-BB79-52B10A94EF15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentHistory.API", "PaymentHistory.API\PaymentHistory.API.csproj", "{04FC5F9A-F5CD-4B48-BB79-52B10A94EF15}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{954863F3-C941-4893-B4B8-090CD825A068}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{9A029E81-F909-4FE3-83CD-8550DAAAE603}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentHistory.DAL", "PaymentHistory.DAL\PaymentHistory.DAL.csproj", "{432BF057-3FA1-47A5-962D-D1072BC8B76D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{D6520D3C-3826-453C-809C-66F459BB2498}"
 	ProjectSection(SolutionItems) = preProject
-		CustomersTableCreationScript.sql = CustomersTableCreationScript.sql
-		TransactionsTableCreationScript.sql = TransactionsTableCreationScript.sql
+		Migrations\Dockerfile = Migrations\Dockerfile
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentHistory.DAL", "PaymentHistory.DAL\PaymentHistory.DAL.csproj", "{432BF057-3FA1-47A5-962D-D1072BC8B76D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{2053EEE8-461C-4877-B77A-9F3663A7A239}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\CustomersTableCreationScript.sql = Scripts\CustomersTableCreationScript.sql
+		Scripts\TransactionsTableCreationScript.sql = Scripts\TransactionsTableCreationScript.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{06661C3B-8787-4C58-8B31-BAF2E650AF0C}"
+	ProjectSection(SolutionItems) = preProject
+		Migrations\sql\V1__Initialize_paymenthistory_data.sql = Migrations\sql\V1__Initialize_paymenthistory_data.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +46,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{06661C3B-8787-4C58-8B31-BAF2E650AF0C} = {D6520D3C-3826-453C-809C-66F459BB2498}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD45C084-E80C-4604-9252-81B5C1A704F9}

@@ -6,6 +6,6 @@ Amount decimal(18,2) NOT NULL,
 CurrencyCode varchar(3) NOT NULL,
 Status varchar(15) NOT NULL,
 CustomerId bigInt NOT NULL,
-CONSTRAINT FK_TransactionCustomer FOREIGN KEY (CustomerId) REFERENCES Customers(CustomerId),
+CONSTRAINT FK_TransactionCustomer FOREIGN KEY (CustomerId) REFERENCES Customers(CustomerId) ON DELETE CASCADE,
 CONSTRAINT chk_Status CHECK (Status IN ('Success', 'Failed', 'Canceled'))
 );
