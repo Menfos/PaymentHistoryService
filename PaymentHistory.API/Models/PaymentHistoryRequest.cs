@@ -4,8 +4,9 @@ namespace PaymentHistory.API.Models
 {
     public class PaymentHistoryRequest
     {
-        [Range(0, 9999999999, ErrorMessage = "CustomerId parameter should be less than 10 digits")]
-        public long? CustomerId { get; set; }
+        [MaxLength(10, ErrorMessage = "'customerId' parameter should be less than 10 digits")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Invalid Customer ID")]
+        public string CustomerId { get; set; }
 
         [MaxLength(25, ErrorMessage = "'Email' parameter should be less than 25 digits")]
         [EmailAddress(ErrorMessage = "Invalid Email")]
