@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentHistory.API.ActionFilters;
 using PaymentHistory.Domain;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace PaymentHistory.API
 {
@@ -31,6 +33,16 @@ namespace PaymentHistory.API
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddHealthChecks();
+            services.AddSwaggerGen(c =>
+            {
+                const string version = "v1";
+                c.SwaggerDoc(version, new Info { Title = "PaymentHistory", Version = version });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddSingleton<PaymentHistoryRequestValidationAttribute>();
 
@@ -47,6 +59,12 @@ namespace PaymentHistory.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PaymentHistory.");
+            });
+            app.UseHealthChecks("/health");
         }
     }
 }

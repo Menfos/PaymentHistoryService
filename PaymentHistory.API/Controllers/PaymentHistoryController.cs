@@ -22,8 +22,16 @@ namespace PaymentHistory.API.Controllers
             this.paymentHistoryHandler = paymentHistoryHandler ?? throw new ArgumentNullException(nameof(paymentHistoryHandler));
         }
 
+        /// <summary>
+        /// Get customers payment history
+        /// </summary>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="404">Not Found</response>
+        /// <response code="500">Internal server error</response>
         [HttpGet]
         [ServiceFilter(typeof(PaymentHistoryRequestValidationAttribute))]
+        [ProducesResponseType(typeof(PaymentHistoryResponse), 200)]
         public async Task<IActionResult> Get([FromQuery]PaymentHistoryRequest paymentHistoryRequest)
         {
             if (!ModelState.IsValid)
