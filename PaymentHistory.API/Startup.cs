@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Reflection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PaymentHistory.API.ActionFilters;
 using PaymentHistory.Domain;
 
 namespace PaymentHistory.API
@@ -21,7 +24,15 @@ namespace PaymentHistory.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.DateFormatString =  "dd/mm/yyyy hh:mm";
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddSingleton<PaymentHistoryRequestValidationAttribute>();
 
             services.AddDomainDependencies(builder =>
                 builder.UseSqlServer(

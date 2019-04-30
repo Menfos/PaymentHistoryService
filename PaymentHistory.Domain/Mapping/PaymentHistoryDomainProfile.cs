@@ -11,7 +11,7 @@ namespace PaymentHistory.Domain.Mapping
         {
             CreateMap<CustomerEntity, CustomerPaymentsDto>();
             CreateMap<TransactionEntity, TransactionDto>()
-                .ForMember(transactionDto => transactionDto.Status,
+                .ForMember(dest => dest.Status,
                     opt => opt.MapFrom(src =>
                         Enum.IsDefined(typeof(TransactionStatus), src.Status)
                             ? Enum.Parse(typeof(TransactionStatus), src.Status)
