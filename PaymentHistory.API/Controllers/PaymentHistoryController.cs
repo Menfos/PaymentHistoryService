@@ -27,12 +27,13 @@ namespace PaymentHistory.API.Controllers
         public async Task<IActionResult> Get([FromQuery]PaymentHistoryRequest paymentHistoryRequest)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             var customerInfo = mapper.Map<CustomerInfoDto>(paymentHistoryRequest);
             var customerPayments = await paymentHistoryHandler.GetPaymentHistoryAsync(customerInfo);
+
+            if (customerPayments == null)
+                return NotFound();
 
             var paymentHistoryResponse = mapper.Map<PaymentHistoryResponse>(customerPayments);
             return Ok(paymentHistoryResponse);
