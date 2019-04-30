@@ -15,11 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PaymentHistory.DAL\PaymentHistory.DAL.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\PaymentHistory.Domain\PaymentHistory.Domain.csproj" />
   </ItemGroup>
 
 </Project>

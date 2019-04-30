@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PaymentHistory.DAL;
+using PaymentHistory.Domain;
 
 namespace PaymentHistory.API
 {
@@ -23,7 +23,7 @@ namespace PaymentHistory.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDataDependencies(builder =>
+            services.AddDomainDependencies(builder =>
                 builder.UseSqlServer(
                     Configuration["PaymentHistoryDatabase:ConnectionString"],
                     optionsBuilder => optionsBuilder.EnableRetryOnFailure(
